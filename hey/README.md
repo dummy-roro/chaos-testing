@@ -156,7 +156,7 @@ Check app logs for errors and recover if needed:
 sudo systemctl restart myapp.service
 ```
 
-# Notes & Tips
+## Notes & Tips
 
 Start small — gradually increase stress levels.
 
