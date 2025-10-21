@@ -1,3 +1,6 @@
+#Run Locust
+#locust -f locustfile.py
+
 from locust import HttpUser, task, between
 
 class VMAppUser(HttpUser):
