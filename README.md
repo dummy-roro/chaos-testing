@@ -27,12 +27,3 @@ Run Locust or k6 as shown in individual scripts.
 
 ---
 
-I can also **enhance this setup with a single “run-all” orchestrator script** that:
-
-- Runs a chaos experiment (CPU, memory, or network)  
-- Simultaneously runs a load test (Locust or k6)  
-- Collects metrics into simple CSV/log files  
-
-This will let you **simulate real-world stress + chaos safely on your VM**.  
-
-Do you want me to create that orchestrator script next?
