@@ -24,6 +24,13 @@ Replace <VM_IP_OR_DOMAIN> in load scripts with your VM's address.
 
 Run Locust or k6 as shown in individual scripts.
 
-
+Run Locust:
+```bash
+locust -f locustfile.py
+```
+Run k6:
+```bash
+k6 run load/k6_spike_test.js
+```
 ---
 
