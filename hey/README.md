@@ -1,16 +1,16 @@
-VM Chaos + Load Testing Runbook (Command-Line Style)
-Step 0: Prerequisites
+# VM Chaos + Load Testing Runbook (Command-Line Style)
+## Step 0: Prerequisites
 
 Install required tools on your VM:
 
-# Load testing
 ```bash
+# Load testing
 sudo apt-get update
 sudo apt-get install -y hey
 ```
 
-# Chaos / stress testing
 ```bash
+# Chaos / stress testing
 sudo apt-get install -y stress-ng
 ```
 
@@ -20,7 +20,7 @@ Optional monitoring tools:
 sudo apt-get install -y htop iftop sysstat
 ```
 
-Step 1: Baseline Load
+## Step 1: Baseline Load
 
 Determine normal system behavior before chaos:
 ```bash
@@ -29,6 +29,7 @@ hey -n 1000 -c 10 http://localhost/
 ```
 
 Observe:
+
 ```bash
 # CPU and memory
 htop       # interactive
@@ -49,7 +50,7 @@ Error rate
 
 CPU & memory usage
 
-Step 2: CPU Stress Test
+## Step 2: CPU Stress Test
 
 Stress CPU gradually:
 
@@ -71,7 +72,8 @@ App response time (hey or browser)
 
 Error rate in app logs
 
-Step 3: Memory Stress Test
+## Step 3: Memory Stress Test
+
 ```bash
 # Stress 1 GB memory for 60s
 sudo stress-ng --vm 1 --vm-bytes 1G --timeout 60s --metrics-brief
@@ -86,7 +88,8 @@ Memory usage and swap (free -m, htop)
 
 App errors due to OOM (Out of Memory)
 
-Step 4: Disk I/O Stress
+## Step 4: Disk I/O Stress
+
 ```bash
 # Stress disk with 4 workers for 60s
 sudo stress-ng --io 4 --timeout 60s --metrics-brief
@@ -98,7 +101,8 @@ Disk usage & I/O wait (iostat, htop)
 
 Response time or failed writes in the app
 
-Step 5: Network Latency / Packet Loss
+## Step 5: Network Latency / Packet Loss
+
 ```bash
 # Add 200ms delay and 10% packet loss
 sudo tc qdisc add dev eth0 root netem delay 200ms loss 10%
@@ -116,7 +120,7 @@ App response time
 
 Retries or errors in app logs
 
-Step 6: Load + Chaos Combination (Optional)
+## Step 6: Load + Chaos Combination (Optional)
 
 While stressing CPU/memory, generate load:
 
@@ -134,7 +138,7 @@ Combined effect on latency and error rates
 
 CPU, memory, disk, network metrics
 
-Step 7: Cleanup / Recovery
+## Step 7: Cleanup / Recovery
 
 Remove network stress if any:
 ```bash
